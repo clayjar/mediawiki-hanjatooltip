@@ -1,0 +1,78 @@
+{
+	"name": "HanjaTooltip",
+	"version": "1.0.0",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"descriptionmsg": "hanjatooltip-desc",
+	"requires": {
+		"MediaWiki": ">= 1.46.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\HanjaTooltip\\": "includes/"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\HanjaTooltip\\HanjaTooltipHooks"
+		}
+	},
+	"Hooks": {
+		"ParserAfterTidy": "main",
+		"BeforePageDisplay": "main"
+	},
+	"APIModules": {
+		"hanja": "MediaWiki\\Extension\\HanjaTooltip\\ApiHanjaLookup"
+	},
+	"MessagesDirs": {
+		"HanjaTooltip": [
+			"i18n"
+		]
+	},
+	"config": {
+		"HanjaTooltipDBserver": {
+			"value": "127.0.0.1",
+			"public": true,
+			"description": "Hostname of the MySQL server that stores the hanja dictionary."
+		},
+		"HanjaTooltipDBport": {
+			"value": 3306,
+			"public": true,
+			"description": "Port of the MySQL server that stores the hanja dictionary."
+		},
+		"HanjaTooltipDBname": {
+			"value": "hanja1",
+			"public": true,
+			"description": "Database name that contains the hanja table."
+		},
+		"HanjaTooltipDBuser": {
+			"value": "",
+			"public": false,
+			"description": "MySQL user for dictionary lookups. This account should have SELECT on the hanja table only."
+		},
+		"HanjaTooltipDBpassword": {
+			"value": "",
+			"public": false,
+			"description": "Password for HanjaTooltipDBuser."
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "HanjaTooltip"
+	},
+	"ResourceModules": {
+		"ext.hanjaTooltip.styles": {
+			"styles": "modules/ext.hanjaTooltip.css"
+		},
+		"ext.hanjaTooltip": {
+			"scripts": "modules/ext.hanjaTooltip.js",
+			"dependencies": [
+				"ext.hanjaTooltip.styles",
+				"mediawiki.api",
+				"jquery"
+			],
+			"messages": [
+				"hanjatooltip-not-found"
+			]
+		}
+	},
+	"manifest_version": 2
+}

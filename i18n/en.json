@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"hanjatooltip-desc": "Tags Han ideographs and shows a dictionary tooltip on click or tap.",
+	"hanjatooltip-not-found": "Not found",
+	"apihelp-hanja-summary": "Look up one Han character in the external hanja dictionary.",
+	"apihelp-hanja-param-char": "The single character to look up.",
+	"apihelp-hanja-example-1": "Look up 韓",
+	"apierror-hanjatooltip-notonechar": "The char parameter must be exactly one character.",
+	"apierror-hanjatooltip-dberror": "The hanja dictionary is unavailable.",
+	"apierror-hanjatooltip-config": "The hanja dictionary database is not configured."
+}
