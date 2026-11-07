@@ -42,7 +42,7 @@ Set the connection in the environment, or in a `.env` file in the extension root
 ```
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=hanja1
+DB_DATABASE=hanja
 DB_USERNAME=
 DB_PASSWORD=
 ```
