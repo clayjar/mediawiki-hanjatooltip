@@ -6,11 +6,13 @@ The lookup reads the `hanja` table in an external MySQL database. The page modul
 
 ## Install
 
-The extension directory must be named `HanjaTooltip`, because ResourceLoader publishes files under that path.
+Clone the extension into `extensions/HanjaTooltip`. The directory name has to be `HanjaTooltip`, because ResourceLoader publishes files under that path.
 
 ```bash
-ln -s /path/to/mediawiki-hanja /path/to/mediawiki/extensions/HanjaTooltip
+git clone https://github.com/clayjar/mediawiki-hanjatooltip.git extensions/HanjaTooltip
 ```
+
+Run that from the MediaWiki root. To update an existing checkout, run `git pull` inside `extensions/HanjaTooltip`.
 
 Add this to `LocalSettings.php`. The database user used here should have `SELECT` on `hanja` only.
 
