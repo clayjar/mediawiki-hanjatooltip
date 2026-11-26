@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2026-11-13
+
+### Changed
+
+- `action=hanja` accepts a request only when it comes from the wiki that installed the extension. A cross-site call is rejected.
+- Lookup responses are cached privately, so a shared cache cannot skip that check.
+
 ## [1.0.0] - 2026-11-07
 
 ### Added

@@ -2,7 +2,7 @@
 
 MediaWiki extension that wraps Han ideographs on parsed pages and shows a dictionary entry when a reader clicks or taps a character.
 
-The lookup reads the `hanja` table in an external MySQL database. The page module calls `api.php?action=hanja&char=韓`.
+The lookup reads the `hanja` table in an external MySQL database. The page module calls `api.php?action=hanja&char=韓`. That module accepts the call only from the wiki where the extension is installed.
 
 ## Install
 
