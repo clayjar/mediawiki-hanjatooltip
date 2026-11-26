@@ -4,6 +4,10 @@ MediaWiki extension that wraps Han ideographs on parsed pages and shows a dictio
 
 The lookup reads the `hanja` table in an external MySQL database. The page module calls `api.php?action=hanja&char=韓`. That module accepts the call only from the wiki where the extension is installed.
 
+페이지 내 한자를 사용자가 클릭하거나 탭하면 사전 항목을 보여주는 미디어위키(MediaWiki) 확장 기능입니다.
+
+![A sample screenshot](https://files.mhan.dev/img/mediawiki-hanjatooltip-1.png "Click or tap")
+
 ## Install
 
 Clone the extension into `extensions/HanjaTooltip`. The directory name has to be `HanjaTooltip`, because ResourceLoader publishes files under that path.
