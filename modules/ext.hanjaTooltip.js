@@ -2,16 +2,8 @@
 	'use strict';
 
 	var cache = new Map();
-	var api = null;
 	var popup = null;
 	var current = null;
-
-	function getApi() {
-		if ( !api ) {
-			api = new mw.Api();
-		}
-		return api;
-	}
 
 	function ensurePopup() {
 		if ( !popup ) {
@@ -62,20 +54,33 @@
 
 	function lookup( character ) {
 		if ( cache.has( character ) ) {
-			return $.Deferred().resolve( cache.get( character ) ).promise();
+			return Promise.resolve( cache.get( character ) );
 		}
-		return getApi().get( {
-			action: 'hanja',
-			formatversion: 2,
-			char: character
+		// Post the parameters. A GET puts action= in the query string, and the
+		// site's edge challenge rejects that URL for a mobile user agent.
+		var body = new URLSearchParams();
+		body.set( 'action', 'hanja' );
+		body.set( 'format', 'json' );
+		body.set( 'formatversion', '2' );
+		body.set( 'char', character );
+		return fetch( mw.util.wikiScript( 'api' ), {
+			method: 'POST',
+			credentials: 'same-origin',
+			headers: { Accept: 'application/json' },
+			body: body
+		} ).then( function ( response ) {
+			if ( !response.ok ) {
+				throw new Error( 'lookup failed' );
+			}
+			return response.json();
 		} ).then( function ( data ) {
-			var info = data.hanja || {};
+			var info = data && data.hanja || {};
 			var text = info.found ?
 				character + ( info.definition ? '\n' + info.definition : '' ) :
 				character + '\n' + mw.message( 'hanjatooltip-not-found' ).text();
 			cache.set( character, text );
 			return text;
-		}, function () {
+		} ).catch( function () {
 			return character + '\n' + mw.message( 'hanjatooltip-not-found' ).text();
 		} );
 	}

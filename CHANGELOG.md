@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1] - 2026-11-27
+
+### Fixed
+
+- The tooltip posts the dictionary lookup. A GET left `action=hanja` in the query string, and the edge challenge answered that URL with a block page for a mobile user agent, which the tooltip showed as "Not found".
+- The tooltip uses `width: max-content`, so a short entry beside the right edge no longer collapses to a few characters.
+
 ## [1.1.0] - 2026-11-13
 
 ### Changed
